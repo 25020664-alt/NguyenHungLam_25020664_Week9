@@ -5,10 +5,10 @@ import java.io.InputStream;
 import java.nio.charset.StandardCharsets;
 import java.io.File;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertTrue;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+
+import static org.junit.jupiter.api.Assertions.*;
 
 /**
  * Unit tests for BankSystem core functionalities.
@@ -71,5 +71,32 @@ class BankSystemTest {
         String actualPath = exporter.buildReportPath("reports", "statement.txt");
         String expectedPath = new File("reports", "statement.txt").getPath();
         assertEquals(expectedPath, actualPath);
+    }
+    @Test
+    void testLoanSimpleInterest() {
+        LoanCalculator calculator = new LoanCalculator();
+        assertEquals(800.0, calculator.calculateSimpleInterest(10000.0, 0.08, 1), 0.01);
+        assertThrows(
+                IllegalArgumentException.class,
+                () -> calculator.calculateSimpleInterest(-100.0, 0.08, 1));
+    }
+
+    @Test
+    void testLoanMonthlyPayment() {
+        LoanCalculator calculator = new LoanCalculator();
+        assertEquals(1000.0, calculator.calculateMonthlyPayment(12000.0, 0.0, 12), 0.01);
+        assertEquals(1054.99, calculator.calculateMonthlyPayment(12000.0, 0.10, 12), 0.01);
+        assertThrows(
+                IllegalArgumentException.class,
+                () -> calculator.calculateMonthlyPayment(0.0, 0.05, 12));
+    }
+
+    @Test
+    void testLoanEligibility() {
+        LoanCalculator calculator = new LoanCalculator();
+        assertFalse(calculator.isEligibleForLoan(300.0, 750));
+        assertTrue(calculator.isEligibleForLoan(1000.0, 720));
+        assertTrue(calculator.isEligibleForLoan(2500.0, 650));
+        assertFalse(calculator.isEligibleForLoan(1000.0, 600));
     }
 }
