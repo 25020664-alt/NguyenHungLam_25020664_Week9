@@ -1,4 +1,4 @@
-package test.java.bank_system;
+package bank_system;
 
 import java.io.ByteArrayInputStream;
 import java.io.InputStream;

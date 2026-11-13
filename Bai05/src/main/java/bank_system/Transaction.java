@@ -1,4 +1,4 @@
-package main.java.bank_system;
+package bank_system;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

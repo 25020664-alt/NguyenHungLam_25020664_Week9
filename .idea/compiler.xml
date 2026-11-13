@@ -9,12 +9,13 @@
         <module name="Bai04" />
         <module name="Bai03" />
         <module name="maven-lab-01" />
+        <module name="jacoco-maven-plugin" />
         <module name="my-app" />
+        <module name="Bai04 (1)" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
-      <module name="Bai05" target="17" />
-      <module name="jacoco-maven-plugin" target="1.8" />
+      <module name="jacoco-maven-plugin (1) (org.jacoco)" target="1.8" />
     </bytecodeTargetLevel>
   </component>
 </project>

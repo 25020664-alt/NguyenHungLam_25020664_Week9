@@ -1,7 +1,5 @@
-package main.java.bank_system;
+package bank_system;
 
-import bank_system.InsufficientFundsException;
-import bank_system.InvalidFundingAmountException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 

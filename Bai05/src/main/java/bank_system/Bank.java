@@ -1,9 +1,5 @@
-package main.java.bank_system;
+package bank_system;
 
-import bank_system.Account;
-import bank_system.CheckingAccount;
-import bank_system.Customer;
-import bank_system.SavingsAccount;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
