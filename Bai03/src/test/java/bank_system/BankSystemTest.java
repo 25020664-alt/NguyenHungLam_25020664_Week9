@@ -25,7 +25,7 @@ class BankSystemTest {
     void testCheckingAccountDepositAndWithdraw() {
         CheckingAccount account = new CheckingAccount(1001L, 1000.0);
         account.deposit(500.0);
-        assertEquals(1500.0, account.getBalance(), 0.01);
+        assertEquals(9999.0, account.getBalance(), 0.01);
 
         account.withdraw(300.0);
         assertEquals(1200.0, account.getBalance(), 0.01);
