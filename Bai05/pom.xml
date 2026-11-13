@@ -1,0 +1,47 @@
+<!-- JaCoCo Maven Plugin: Đo lường và ép buộc độ bao phủ code >= 80% -->
+<plugin>
+    <groupId>org.jacoco</groupId>
+    <artifactId>jacoco-maven-plugin</artifactId>
+    <version>0.8.12</version>
+    <executions>
+        <!-- 1. Gắn agent theo dõi trong lúc chạy unit test -->
+        <execution>
+            <id>prepare-agent</id>
+            <goals>
+                <goal>prepare-agent</goal>
+            </goals>
+        </execution>
+
+        <!-- 2. Xuất báo cáo HTML/XML tại target/site/jacoco/index.html -->
+        <execution>
+            <id>report</id>
+            <phase>test</phase>
+            <goals>
+                <goal>report</goal>
+            </goals>
+        </execution>
+
+        <!-- 3. Quy tắc nghiêm ngặt (Quality Gate): Fail build nếu coverage < 80% -->
+        <execution>
+            <id>jacoco-check</id>
+            <phase>verify</phase>
+            <goals>
+                <goal>check</goal>
+            </goals>
+            <configuration>
+                <rules>
+                    <rule>
+                        <element>BUNDLE</element>
+                        <limits>
+                            <limit>
+                                <counter>INSTRUCTION</counter>
+                                <value>COVEREDRATIO</value>
+                                <minimum>0.80</minimum>
+                            </limit>
+                        </limits>
+                    </rule>
+                </rules>
+            </configuration>
+        </execution>
+    </executions>
+</plugin>

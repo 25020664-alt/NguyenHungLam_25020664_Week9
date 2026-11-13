@@ -1,0 +1,35 @@
+name: Java Maven CI & JaCoCo Coverage Gate (Bai 05)
+
+on:
+  push:
+    branches: [ "main", "master" ]
+  pull_request:
+    branches: [ "main", "master" ]
+
+jobs:
+  build-test-coverage:
+    name: Build, Test & Verify Coverage (>= 80%)
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up JDK 17
+        uses: actions/setup-java@v4
+        with:
+          java-version: '17'
+          distribution: 'temurin'
+          cache: maven
+          cache-dependency-path: Bai05/pom.xml
+
+      - name: Run Maven Verify & JaCoCo Quality Gate
+        run: mvn -B -f Bai05/pom.xml clean verify
+
+      - name: Upload JaCoCo Coverage Report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: jacoco-coverage-report-bai05
+          path: Bai05/target/site/jacoco/
+          retention-days: 7

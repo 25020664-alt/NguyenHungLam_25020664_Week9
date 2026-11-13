@@ -8,7 +8,13 @@
         <option value="$PROJECT_DIR$/Bai02/pom.xml" />
         <option value="$PROJECT_DIR$/Bai03/pom.xml" />
         <option value="$PROJECT_DIR$/Bai04/pom.xml" />
+        <option value="$PROJECT_DIR$/Bai05/pom.xml" />
       </list>
+    </option>
+    <option name="ignoredFiles">
+      <set>
+        <option value="$PROJECT_DIR$/Bai05/pom.xml" />
+      </set>
     </option>
   </component>
   <component name="ProjectRootManager" version="2" languageLevel="JDK_26" default="true" project-jdk-name="26" project-jdk-type="JavaSDK">

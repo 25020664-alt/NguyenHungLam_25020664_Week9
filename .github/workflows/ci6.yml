@@ -1,0 +1,27 @@
+name: Java Maven CI & Dependency Caching (Bai 06)
+
+on:
+  push:
+    branches: [ "main", "master" ]
+  pull_request:
+    branches: [ "main", "master" ]
+
+jobs:
+  build-with-cache:
+    name: Build & Test with Maven Cache
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up JDK 17 with Maven Caching
+        uses: actions/setup-java@v4
+        with:
+          java-version: '17'
+          distribution: 'temurin'
+          cache: 'maven'
+          cache-dependency-path: Bai06/pom.xml
+
+      - name: Run Maven Build Lifecycle (Test & Package)
+        run: mvn -B -f Bai06/pom.xml clean test package
